@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administration — MotoParts</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <canvas id="scene3d" aria-hidden="true"></canvas>
+  <div class="voile" aria-hidden="true"></div>
+
+  <!-- ======================= EN-TÊTE ======================= -->
+  <header class="entete">
+    <a class="marque" href="index.html">
+      <span class="marque-nom">MOTO<em>PARTS</em></span>
+      <span class="marque-sous">espace gestion</span>
+    </a>
+    <div class="entete-actions">
+      <a class="lien-admin" href="index.html">← Voir le site</a>
+      <button class="btn btn-discret masque" id="btn-deconnexion">Se déconnecter</button>
+    </div>
+  </header>
+
+  <!-- ================= ÉCRAN DE CONNEXION ================== -->
+  <section class="ecran-connexion" id="ecran-connexion">
+    <form class="carte-connexion" id="form-connexion" novalidate>
+      <h1>Espace <em>gestion</em></h1>
+      <p>Cette zone permet d'ajouter, de modifier et de supprimer
+         des pièces du catalogue. Entrez le mot de passe pour continuer.</p>
+      <div class="champ">
+        <label for="champ-mdp">Mot de passe</label>
+        <input id="champ-mdp" type="password" autocomplete="current-password"
+               required autofocus />
+      </div>
+      <p class="message-erreur" id="erreur-connexion" aria-live="polite"></p>
+      <button class="btn btn-principal" type="submit" style="width:100%; justify-content:center;">
+        Se connecter
+      </button>
+    </form>
+  </section>
+
+  <!-- ================= TABLEAU DE BORD ===================== -->
+  <section class="masque" id="ecran-gestion">
+    <div class="barre-admin">
+      <h1>Gestion du <em>catalogue</em></h1>
+      <div class="actions">
+        <button class="btn" id="btn-demo">Charger le jeu de démo</button>
+        <button class="btn btn-principal" id="btn-ajouter">+ Ajouter une pièce</button>
+      </div>
+    </div>
+
+    <main class="liste-admin">
+      <p class="compteur" id="compteur" aria-live="polite">Chargement…</p>
+      <div id="liste-produits"></div>
+      <div class="etat masque" id="vide">
+        <strong>Catalogue vide</strong>
+        <p>Ajoutez une première pièce, ou chargez le jeu de démonstration.</p>
+      </div>
+    </main>
+  </section>
+
+  <!-- ============ FORMULAIRE AJOUT / MODIFICATION ========== -->
+  <dialog id="dialogue-form" aria-labelledby="form-titre">
+    <form id="form-produit" method="dialog" novalidate>
+      <div class="dialogue-entete">
+        <div>
+          <h2 id="form-titre">Ajouter une pièce</h2>
+          <p class="dialogue-sous">Les champs marqués * sont obligatoires.</p>
+        </div>
+        <button class="btn-fermer" type="button" data-fermer aria-label="Fermer">✕</button>
+      </div>
+
+      <div class="dialogue-corps">
+        <input type="hidden" id="champ-id" />
+        <div class="grille-form">
+          <div class="champ champ-large">
+            <label for="champ-nom">Nom de la pièce *</label>
+            <input id="champ-nom" type="text" required
+                   placeholder="Ex. Plaquettes de frein avant" />
+          </div>
+          <div class="champ">
+            <label for="champ-marque">Marque</label>
+            <input id="champ-marque" type="text" placeholder="Ex. Brembo" />
+          </div>
+          <div class="champ">
+            <label for="champ-categorie">Catégorie *</label>
+            <select id="champ-categorie" required>
+              <option value="">Choisir…</option>
+            </select>
+          </div>
+          <div class="champ">
+            <label for="champ-prix">Prix (€) *</label>
+            <input id="champ-prix" type="number" min="0" step="0.01" required
+                   placeholder="39.90" />
+          </div>
+          <div class="champ">
+            <label for="champ-image">Image (URL)</label>
+            <input id="champ-image" type="url" placeholder="https://…" />
+          </div>
+
+          <div class="bloc-attributs">
+            <label>Caractéristiques techniques — propres à la catégorie</label>
+            <div id="liste-attributs"></div>
+            <button class="btn btn-petit" type="button" id="btn-attribut">
+              + Ajouter une caractéristique
+            </button>
+          </div>
+
+          <div class="champ champ-large">
+            <label for="champ-compatibilites">Compatibilités véhicules</label>
+            <textarea id="champ-compatibilites"
+                      placeholder="Un véhicule par ligne&#10;Ex. Yamaha MT-07 (2018+)"></textarea>
+            <span class="aide">Un modèle de moto par ligne — enregistré comme tableau.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dialogue-actions">
+        <button class="btn" type="button" data-fermer>Annuler</button>
+        <button class="btn btn-principal" type="submit" id="btn-enregistrer">
+          Enregistrer la pièce
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="pied">
+    <span>MotoParts — espace d'administration · Gauvin CAILLOU &amp; Alessio COGERINO</span>
+    <span class="mono">session limitée à cet onglet (sessionStorage)</span>
+  </footer>
+
+  <div id="toasts" aria-live="polite"></div>
+
+  <script src="js/scene3d.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
