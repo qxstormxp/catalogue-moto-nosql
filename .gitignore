@@ -1,0 +1,8 @@
+# Dépendances et caches éventuels
+node_modules/
+.firebase/
+*.log
+
+# Fichiers systèmes
+.DS_Store
+Thumbs.db
