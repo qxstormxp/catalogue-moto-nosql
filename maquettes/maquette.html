@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maquettes filaires — Catalogue de pièces moto</title>
+<style>
+  /* Wireframes basse fidélité : structure et zones, pas le style final.
+     La version haute fidélité est produite avec Google Stitch
+     (voir docs/05-maquette-google-stitch.md). */
+  :root { --trait:#9aa3ab; --fonce:#3c454d; --accent:#e2581c; --fond:#f3f4f6; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14px/1.5 system-ui,sans-serif; color:var(--fonce); background:var(--fond); padding:2rem 1rem 4rem; }
+  h1 { text-align:center; font-size:1.5rem; }
+  .sous-titre { text-align:center; color:#6b7480; margin-bottom:2.5rem; }
+  .planche { max-width:880px; margin:0 auto 3rem; }
+  .planche h2 { font-size:1.05rem; letter-spacing:.04em; text-transform:uppercase; }
+  .planche h2 small { color:#6b7480; text-transform:none; letter-spacing:0; font-weight:400; }
+  .ecran { background:#fff; border:2px solid var(--fonce); border-radius:10px; padding:14px; box-shadow:4px 4px 0 #d4d8dd; }
+  .boite { border:1.5px dashed var(--trait); border-radius:6px; padding:8px 10px; color:#6b7480; background:#fafbfc; }
+  .ligne { display:flex; gap:10px; align-items:center; margin-bottom:10px; flex-wrap:wrap; }
+  .ligne > * { margin:0; }
+  .etire { flex:1; }
+  .btn { border:1.5px solid var(--fonce); border-radius:6px; padding:6px 12px; background:#fff; white-space:nowrap; }
+  .btn.plein { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .grille { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:10px; }
+  .carte { border:1.5px solid var(--trait); border-radius:8px; overflow:hidden; background:#fff; }
+  .img { height:80px; background:repeating-linear-gradient(45deg,#e8eaee,#e8eaee 8px,#f4f5f7 8px,#f4f5f7 16px); display:flex; align-items:center; justify-content:center; color:#9aa3ab; position:relative; }
+  .badge { position:absolute; top:6px; left:6px; font-size:10px; border:1px solid var(--accent); color:var(--accent); border-radius:4px; padding:1px 5px; background:#fff; }
+  .carte .corps { padding:8px; }
+  .prix { color:var(--accent); font-weight:700; }
+  .mini { display:flex; gap:6px; padding:0 8px 8px; }
+  .mini span { flex:1; border:1px solid var(--trait); border-radius:5px; text-align:center; font-size:10px; padding:3px 0; color:#6b7480; }
+  .annot { font-size:12.5px; color:#6b7480; margin-top:10px; }
+  .annot b { color:var(--accent); }
+  .specs div { display:flex; align-items:baseline; gap:6px; padding:3px 0; }
+  .specs .points { flex:1; border-bottom:1.5px dotted var(--trait); }
+  .puces span { display:inline-block; border:1px solid var(--trait); border-radius:999px; padding:2px 10px; margin:2px 4px 2px 0; font-size:12px; }
+  .form-g { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .champ { border:1.5px solid var(--trait); border-radius:6px; padding:6px 10px; color:#9aa3ab; background:#fff; }
+  .champ b { display:block; font-size:10.5px; color:#6b7480; font-weight:600; }
+  .large { grid-column:1/-1; }
+  @media print { body { background:#fff; } .ecran { box-shadow:none; } }
+</style>
+</head>
+<body>
+
+<h1>Maquettes filaires — MotoParts, catalogue de pièces moto</h1>
+<p class="sous-titre">4 écrans clés · wireframes de cadrage (la version haute fidélité est réalisée avec Google Stitch)</p>
+
+<!-- ================== ÉCRAN 1 : LISTE ================== -->
+<section class="planche">
+  <h2>Écran 1 — Liste du catalogue <small>· page d'accueil</small></h2>
+  <div class="ecran">
+    <div class="ligne">
+      <div class="boite"><b>MOTOPARTS</b><br /><span style="font-size:10px">catalogue d'atelier</span></div>
+      <span class="etire"></span>
+      <span class="btn">Administration</span>
+    </div>
+    <div class="ligne">
+      <div class="boite etire">🔍 Rechercher une pièce, une marque…</div>
+      <div class="boite">Toutes les catégories ▾</div>
+    </div>
+    <p style="font-size:11px;color:#9aa3ab;margin:4px 0 8px">10 PIÈCES AU CATALOGUE</p>
+    <div class="grille">
+      <div class="carte"><div class="img"><span class="badge">Freinage</span>photo</div><div class="corps">Plaquettes de frein<br /><small>Brembo</small><br /><span class="prix">39,90 €</span></div><div class="mini"><span>Fiche</span><span>Modifier</span><span>Suppr.</span></div></div>
+      <div class="carte"><div class="img"><span class="badge">Pneumatique</span>photo</div><div class="corps">Pneu arrière Power 6<br /><small>Michelin</small><br /><span class="prix">159,90 €</span></div><div class="mini"><span>Fiche</span><span>Modifier</span><span>Suppr.</span></div></div>
+      <div class="carte"><div class="img"><span class="badge">Transmission</span>photo</div><div class="corps">Kit chaîne 525<br /><small>DID</small><br /><span class="prix">149,90 €</span></div><div class="mini"><span>Fiche</span><span>Modifier</span><span>Suppr.</span></div></div>
+      <div class="carte"><div class="img"><span class="badge">Échappement</span>photo</div><div class="corps">Silencieux slip-on<br /><small>Akrapovič</small><br /><span class="prix">549,00 €</span></div><div class="mini"><span>Fiche</span><span>Modifier</span><span>Suppr.</span></div></div>
+    </div>
+  </div>
+  <p class="annot"><b>Annotations :</b> recherche = filtrage instantané à la frappe · le menu catégorie relance une requête Firestore (<code>where</code>) ·
+  clic sur une carte → écran 2 · « Administration » → écran 4 (connexion) puis gestion · grille responsive (1 colonne sur mobile) · états « chargement » et « aucune pièce trouvée » prévus.</p>
+</section>
+
+<!-- ================== ÉCRAN 2 : DÉTAIL ================== -->
+<section class="planche">
+  <h2>Écran 2 — Fiche technique <small>· fenêtre modale au-dessus de la liste</small></h2>
+  <div class="ecran" style="max-width:560px;margin:auto">
+    <div class="ligne">
+      <div><b style="color:var(--fonce)">Plaquettes de frein avant</b><br /><small>Brembo · Freinage</small></div>
+      <span class="etire"></span><span class="btn">✕</span>
+    </div>
+    <div class="img" style="height:120px;border-radius:6px">photo grand format</div>
+    <p class="prix" style="font-size:1.3rem;margin:8px 0 4px">39,90 €</p>
+    <p style="font-size:10.5px;letter-spacing:.12em;color:#9aa3ab;margin:10px 0 2px">CARACTÉRISTIQUES TECHNIQUES</p>
+    <div class="specs">
+      <div><span>matiere</span><span class="points"></span><span>céramique</span></div>
+      <div><span>position</span><span class="points"></span><span>avant</span></div>
+    </div>
+    <p style="font-size:10.5px;letter-spacing:.12em;color:#9aa3ab;margin:12px 0 4px">COMPATIBILITÉS VÉHICULES</p>
+    <div class="puces"><span>Yamaha MT-07 (2018+)</span><span>Honda CB650R</span></div>
+
+  </div>
+  <p class="annot"><b>Annotations :</b> les caractéristiques affichées proviennent de l'objet <code>attributs</code> : elles <b>changent selon la catégorie</b>
+  (démonstration du modèle document) · la fiche publique est en lecture seule : modifier et supprimer se font depuis l'espace admin (écrans 3 et 4).</p>
+</section>
+
+<!-- ================== ÉCRAN 3 : FORMULAIRE ================== -->
+<section class="planche">
+  <h2>Écran 3 — Formulaire d'ajout / modification <small>· espace admin</small></h2>
+  <div class="ecran" style="max-width:560px;margin:auto">
+    <div class="ligne"><b style="color:var(--fonce)">Ajouter une pièce</b><span class="etire"></span><span class="btn">✕</span></div>
+    <div class="form-g">
+      <div class="champ"><b>Nom de la pièce *</b>Ex. Plaquettes de frein avant</div>
+      <div class="champ"><b>Marque</b>Ex. Brembo</div>
+      <div class="champ"><b>Catégorie *</b>Choisir… ▾</div>
+      <div class="champ"><b>Prix (€) *</b>39.90</div>
+      <div class="champ large"><b>Image (URL)</b>https://…</div>
+      <div class="champ large" style="background:#f6f7f9">
+        <b>Caractéristiques techniques (propres à la catégorie)</b>
+        <div class="ligne" style="margin:6px 0 0"><div class="champ etire">matiere</div><div class="champ etire">céramique</div><span class="btn">✕</span></div>
+        <div class="ligne" style="margin:6px 0 0"><div class="champ etire">position</div><div class="champ etire">avant</div><span class="btn">✕</span></div>
+        <span class="btn" style="margin-top:6px;display:inline-block">+ Ajouter une caractéristique</span>
+      </div>
+      <div class="champ large"><b>Compatibilités véhicules (un véhicule par ligne)</b>Yamaha MT-07 (2018+)<br />Honda CB650R</div>
+    </div>
+    <div class="ligne" style="justify-content:flex-end;margin-top:12px">
+      <span class="btn">Annuler</span>
+      <span class="btn plein">Enregistrer la pièce</span>
+    </div>
+  </div>
+  <p class="annot"><b>Annotations :</b> le même formulaire sert à la <b>création</b> (vide) et à la <b>modification</b> (pré-rempli, id Firestore caché) ·
+  lignes clé/valeur dynamiques pour les attributs · validation : nom + catégorie obligatoires, prix numérique · à l'enregistrement → <code>addDoc</code> ou <code>updateDoc</code>, notification, retour à la liste rafraîchie.</p>
+</section>
+
+<!-- ================== ÉCRAN 4 : CONNEXION ADMIN ================== -->
+<section class="planche">
+  <h2>Écran 4 — Connexion à l'espace d'administration <small>· admin.html</small></h2>
+  <div class="ecran" style="max-width:420px;margin:auto">
+    <div class="ligne">
+      <div class="boite"><b>MOTOPARTS</b><br /><span style="font-size:10px">espace gestion</span></div>
+      <span class="etire"></span>
+      <span class="btn">← Voir le site</span>
+    </div>
+    <div style="padding:18px 6px 6px">
+      <p style="margin:0 0 4px;font-weight:700;color:var(--fonce)">Espace gestion</p>
+      <p style="margin:0 0 12px;font-size:12px">Zone réservée : ajout, modification et suppression des pièces.</p>
+      <div class="champ" style="margin-bottom:10px"><b>Mot de passe</b>••••••••</div>
+      <p style="margin:0 0 10px;font-size:11px;color:#c0392b">Mot de passe incorrect. (zone d'erreur)</p>
+      <span class="btn plein" style="display:block;text-align:center">Se connecter</span>
+    </div>
+  </div>
+  <p class="annot"><b>Annotations :</b> le mot de passe n'est jamais en clair dans le code — seule son <b>empreinte SHA-256</b> est stockée
+  et comparée à la saisie hachée (<code>crypto.subtle</code>) · session conservée dans <code>sessionStorage</code> (fermée avec l'onglet) ·
+  une fois connecté → liste de gestion + écran 3.</p>
+</section>
+
+</body>
+</html>
